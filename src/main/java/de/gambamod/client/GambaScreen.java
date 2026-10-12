@@ -7,8 +7,7 @@ private void finishSpin() {
 
     int winnings = 0;
 
-    // Jede waagerechte Reihe prüfen: links, Mitte, rechts.
-    // Zwei gleiche Symbole reichen nicht.
+    // Prüft jede waagerechte Reihe.
     for (int row = 0; row < 3; row++) {
         class_1792 left = reels[row * 3];
         class_1792 middle = reels[row * 3 + 1];
@@ -16,6 +15,8 @@ private void finishSpin() {
 
         if (left == middle && middle == right) {
             winnings += threeOfAKindPayout(left);
+        } else if (left == middle || left == right || middle == right) {
+            winnings += 50;
         }
     }
 
